@@ -34,3 +34,17 @@ def looking_file(first_question):
             print('File not found')
             
     return looking_for_file
+
+
+
+def looking_file(first_question):
+    if first_question == 'xlsx':
+        name = input('What is the name of the file, without extension? ')
+        try: 
+            looking_for_file = glob.glob(name + '.xlsx')
+        
+        except FileNotFoundError:   # tutaj też mogę dać raiseError gdyby ktoś bardo chciał dać np. cow.xlsx.xlsx
+            print('File not found')
+            
+    return looking_for_file
+            
