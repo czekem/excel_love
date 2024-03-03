@@ -37,14 +37,16 @@ def looking_file(first_question):
 
 
 
-def looking_file(first_question):
-    if first_question == 'xlsx':
-        name = input('What is the name of the file, without extension? ')
-        try: 
-            looking_for_file = glob.glob(name + '.xlsx')
-        
-        except FileNotFoundError:   # tutaj też mogę dać raiseError gdyby ktoś bardo chciał dać np. cow.xlsx.xlsx
-            print('File not found')
-            
-    return looking_for_file
-            
+def open_a_file(looking_for_document):
+    if looking_for_document:  # Check if the list is not empty
+        first_file = looking_for_document[0]  # Take the first file from the list
+        name, extension = first_file.rsplit('.', maxsplit=1)
+        if extension == 'xlsx':
+            df = pd.read_excel(first_file, engine='openpyxl')  # Use the first_file variable
+            working_on_files(df)
+        else:
+            print("Unsupported file extension.")
+            return None
+    else:
+        print("No files found.")
+        return None
