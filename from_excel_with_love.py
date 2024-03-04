@@ -50,3 +50,10 @@ def open_a_file(looking_for_document):
     else:
         print("No files found.")
         return None
+
+
+def working_on_files(df):
+        
+    df.set_index([col for col in df.columns], inplace=True)
+    df = df.reset_index()
+    df = df.loc[:, ['Numer spedycji', 'Numer Zlecenia', 'Zysk',]]
