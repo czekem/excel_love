@@ -57,3 +57,18 @@ def working_on_files(df):
     df.set_index([col for col in df.columns], inplace=True)
     df = df.reset_index()
     df = df.loc[:, ['Numer spedycji', 'Numer Zlecenia', 'Zysk',]]
+
+    with  pd.ExcelWriter('output.xlsx', engine='openpyxl') as writer:
+        df.to_excel(writer, sheet_name="Sheet1", index=False)
+        workbook = writer.book
+        worksheet = writer.sheets['Sheet1']
+        
+        for idx, col in enumerate(df.columns):
+            max_length = 6
+            column = df[col]
+            max_length = max((len(str(cell)) for cell in column), default=max_length)
+            adjusted_width = (max_length +  1) *  1 # < - Here I can really make the  cells "wider" by much, just to change '1' to other value
+            worksheet.column_dimensions[get_column_letter(idx+1)].width = adjusted_width
+   
+            
+        print(f'The file output.xlsx has been saved')
