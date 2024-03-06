@@ -8,4 +8,7 @@ BTW. I will try to change the name later on the " from_excel_with_love"
 The thing I want this program to do:
 
 -Managing ever .csv, .xlsx, or .json and make it possible to work on.
+
 -Allowing user to choose which columns/values he want to work on.
+
+- Make a summary of the choosen columns
