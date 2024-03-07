@@ -1,14 +1,18 @@
 # excel_love
-Building user tool for selecting &amp; transferring columns across Excel, CSV &amp; JSON files. Enables data manipulation and API potential
-If I will have a little bit of luck ( and skills), I want also try to make a deskopt app of this tool.
 
 
-BTW. I will try to change the name later on the " from_excel_with_love"
+# EasySelect: Your One-Stop Tool for Managing and Manipulating Data Across File Formats (Excel, CSV, JSON)
 
-The thing I want this program to do:
+EasySelect is a user-friendly Python application designed to simplify data management by allowing you to select, transfer, and summarize columns across common file formats (Excel, CSV, JSON). This tool empowers you to effectively manipulate your data without requiring any programming knowledge.
 
--Managing ever .csv, .xlsx, or .json and make it possible to work on.
+**Features:**
 
--Allowing user to choose which columns/values he want to work on.
+* Supports various file formats: Excel (.xlsx), CSV, and JSON
+* Intuitive interface enables easy selection of desired columns and values
+* Generates summaries of chosen columns for quick data analysis
+* Saves data modifications to the user-specified file format
+* Planned desktop application (GUI) for user-friendly interaction (will be added soon)
 
-- Make a summary of the choosen columns
+
+
+  
