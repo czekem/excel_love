@@ -1,5 +1,4 @@
 ![EasySelect Logo](https://github.com/czekem/excel_love/blob/main/ec777f4a74014805b9f40ca39caedbdd.png)
-![EasySelect Logo](https://github.com/czekem/excel_love/blob/main/ec777f4a74014805b9f40ca39caedbdd(1).png)
 
 # EasySelect: Your One-Stop Tool for Managing and Manipulating Data Across File Formats (Excel, CSV, JSON)
 
