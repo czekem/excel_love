@@ -9,6 +9,16 @@ import inquirer
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.dimensions import ColumnDimension
 
+def list_of_files():
+    question = [inquirer.List('question',
+                              message="""Do you want to check if file exist,
+                              or list of all files with nammed extension?""",
+                              choices=['check', 'list'])]
+    answers = inquirer.prompt(question)
+    if answers['question'] == 'check':
+        file_checker()
+
+
 
 
 def prepare_question():
