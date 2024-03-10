@@ -72,3 +72,32 @@ def working_on_files(df):
    
             
         print(f'The file output.xlsx has been saved')
+
+
+      
+@click.group()
+def cli():
+    pass
+    
+@cli.command()
+def list_reading():
+    first = list_of_files()
+ 
+ 
+
+@cli.command()
+def main():
+    name_of_file = input('What is the name of the file, without extension? ')
+    list_of_files = glob.glob(name_of_file +'.xlsx')
+    print(list_of_files)
+    first_question = prepare_question()
+    looking_for_document = looking_file(first_question)
+    openin_a_file = open_a_file(looking_for_document)
+    # working_on_file = working_on_files(df)
+    
+    
+    
+    
+
+if __name__ =='__main__':
+    cli()
