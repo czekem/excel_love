@@ -16,7 +16,8 @@ from one file to the another.
 * Generates summaries of chosen columns for quick data analysis
 * Saves data modifications to the user-specified file format
 * Planned desktop application (GUI) for user-friendly interaction (will be added soon)
-* Create a graphs using plotly library ( will be added soon) 
+* Create a graphs using plotly library ( will be added soon)
+* Create an user interferance ( would be grateful for help here) 
 
 
   
