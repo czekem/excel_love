@@ -19,7 +19,7 @@ from one file to the another.
 * Create a graphs using plotly library ( will be added soon)
 * Create an user interferance ( would be grateful for help here)
 
-** What the code is doing now already? **
+**What the code is doing now already?**
 
 For this moment (13.03.2024) the script can do :
 
