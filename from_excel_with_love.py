@@ -40,7 +40,7 @@ def looking_file(first_question):
         try: 
             looking_for_file = glob.glob(name + '.xlsx')
         
-        except FileNotFoundError:   # tutaj też mogę dać raiseError gdyby ktoś bardo chciał dać np. cow.xlsx.xlsx
+        except FileNotFoundError:   # Work on raiseError if user would type xlsx.xlsx or something like that by pure mistake
             print('File not found')
             
     return looking_for_file
