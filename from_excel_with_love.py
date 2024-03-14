@@ -63,8 +63,20 @@ def open_a_file(looking_for_document):
 
 
 def working_on_files(df):
+
+       name = input('Please enter the name under which you want to save a file: ') 
+    if os.path.exists(name + '.xlsx' or name + '.csv' or name + '.json'):
+        print('File already exists')
+        question =[inquirer.List('file', message='Do you want to overwrite it?',
+                                 choices=['yes', 'no'])]
+        answers = inquirer.prompt(question)
+        if answers['file'] == 'yes':
+            name = name
+        if answers['file'] == 'no': 
+            question = [inquirer.List('file', message='Do you want to save it under a different name?',
+                                      choices=['yes', 'no'])]
+            answers = inquirer.prompt(question)
     
- 
             if answers['file'] == 'yes':
                 name = input('Please enter the name under which you want to save a file: ')
             if answers['file'] == 'no':
