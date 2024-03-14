@@ -63,15 +63,48 @@ def open_a_file(looking_for_document):
 
 
 def working_on_files(df):
+    
+ 
+            if answers['file'] == 'yes':
+                name = input('Please enter the name under which you want to save a file: ')
+            if answers['file'] == 'no':
+                print('Operation aborted')
+                sys.exit()
         
     df.set_index([col for col in df.columns], inplace=True)
     df = df.reset_index()
-    df = df.loc[:, ['Numer spedycji', 'Numer Zlecenia', 'Zysk',]]
+    print(df.columns)
+    # question = input('Please write the name of the column you want to transfer to another file: ')  - unecessary now
+    headers = []
+    while True:
+        question = [inquirer.Text('headers', message="Please enter the headers"
+                                  )]
+        answers = inquirer.prompt(question)
+        try:
+            if answers['headers'] in df.columns:
+                headers.append(answers['headers'])
 
-    with  pd.ExcelWriter('output.xlsx', engine='openpyxl') as writer:
-        df.to_excel(writer, sheet_name="Sheet1", index=False)
-        workbook = writer.book
-        worksheet = writer.sheets['Sheet1']
+        except ValueError:
+            print("Invalid input, please enter corret header.")
+        next_addition = input('Do you want to add another header? (y/n): '
+                              ).lower()
+        if next_addition != 'y':
+            break
+    
+    question = [inquirer.List('file', message='Under which extensions you want to save the file?',
+                              choices=['xlsx', 'csv', 'json'])]
+    
+    answers = inquirer.prompt(question)
+    
+    df = df.loc[:, headers]
+    
+    try:
+        if answers['file'] == 'xlsx':
+    
+            with pd.ExcelWriter(name + '.xlsx', engine='openpyxl') as writer:
+                df.to_excel(writer, sheet_name="Sheet1", index=False)
+                workbook = writer.book
+                worksheet = writer.sheets['Sheet1']
         
         for idx, col in enumerate(df.columns):
             max_length = 6
