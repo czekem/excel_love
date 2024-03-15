@@ -99,7 +99,7 @@ def working_on_files(df):
         except ValueError:
             print("Invalid input, please enter corret header.")
         next_addition = input('Do you want to add another header? (y/n): '
-                              ).lower()
+                              ).lower()  # < - wokring to use a while loop for it
         if next_addition != 'y':
             break
     
