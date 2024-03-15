@@ -27,11 +27,13 @@ from one file to the another.
 
 * Create a user interference (would be grateful for help here)
 
+* Create a tool in that way, that it would be easy-usable for people with different disabilities
+
 
 **What the code is doing now already?**
 
 
-For this moment (13.03.2024) the script can do :
+For this moment (16.03.2024) the script can do :
 
 
 * Open any .xlsx, .JSON or .csv file that would be in the same directory as the script
@@ -42,6 +44,5 @@ For this moment (13.03.2024) the script can do :
 
 * Save the file as the .xlsx, .JSON or .csv (it will be added in the following days)
 
-* Create a tool in that way, that it would be easy-usable for people with different disabilities
 
   
