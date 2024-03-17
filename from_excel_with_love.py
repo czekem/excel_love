@@ -136,7 +136,10 @@ def cli():
     
 @cli.command()
 def list_reading():
+    """Allow to check if file exist from which User want to obtain data 
+    to work on them, or list of all files with nammed extension"""
     first = list_of_files()
+ 
  
  
 
