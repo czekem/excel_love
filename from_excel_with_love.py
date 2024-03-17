@@ -18,6 +18,25 @@ def list_of_files():
     if answers['question'] == 'check':
         file_checker()
 
+def file_checker():
+    filename = input('Please write the name of file: ').lower()
+    if '.' in filename:
+        name, extension = filename.rsplit('.', maxsplit=1)
+        filename = name
+    extension = ''
+    question = [inquirer.List('question',
+                              message='Please choose file extension',
+                              choices=['csv', 'xlsx', 'json'])]
+    answers = inquirer.prompt(question)
+    if answers['question'] == 'csv':
+        extension = '.csv'
+    if answers['question'] == 'xlsx':
+        extension = '.xlsx'
+    if answers['question'] == 'json':
+        extension = '.json'
+    try:
+        total = glob.glob(f'{filename}{extension}')
+
 
 
 
