@@ -36,6 +36,37 @@ def file_checker():
         extension = '.json'
     try:
         total = glob.glob(f'{filename}{extension}')
+        if not total: 
+            raise FileNotFoundError
+    except FileNotFoundError:
+        print("""File not found, please try again and check the name of looked file.""")
+        question = input('Do you want to check if file exist, in other folders [Y/N]? '
+                         ).lower()
+        if question in ['y', 'yes']:
+            opening_file = False
+            for root, dirs, files in os.walk('/'):
+                if filename + extension in files:
+                    print(f'The file {filename}{extension} exists in the folder {root}') # os.path.join(root, total)
+                    question = input('Do you want to open this file? [Y/N]'
+                                     ).lower()
+                    if question in ['y', 'yes']:
+                        full_path = os.path.join(root, filename + extension)
+                        list_new = [full_path]
+                        if extension == '.xlsx':
+                            open_a_file(list_new)
+                            opening_file = True
+                            break
+                        elif extension == '.csv':
+                            open_a_file(list_new)
+                            opening_file = True
+                            break
+                        elif extension == '.json':
+                            open_a_file(list_new)
+                            opening_file = True
+                            break
+                
+            if not opening_file:
+                print('File not found')
 
 
 
