@@ -10,15 +10,6 @@ from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.dimensions import ColumnDimension
 
 def list_of_files():
-    question = [inquirer.List('question',
-                              message="""Do you want to check if file exist,
-                              or list of all files with nammed extension?""",
-                              choices=['check', 'list'])]
-    answers = inquirer.prompt(question)
-    if answers['question'] == 'check':
-        file_checker()
-
-def file_checker():
     filename = input('Please write the name of file: ').lower()
     if '.' in filename:
         name, extension = filename.rsplit('.', maxsplit=1)
@@ -67,6 +58,15 @@ def file_checker():
                 
             if not opening_file:
                 print('File not found')
+                
+    else:
+        print(f'The file {total} exists.')
+        question = input('Do you want to read data from this file? [Y/N]'
+                         ).lower()
+        if question == 'y':
+            total = filename + extension
+            list_new = [total]
+            open_a_file(list_new)
 
 
 
