@@ -179,6 +179,92 @@ def working_on_files(df):
         print(f'The file output.xlsx has been saved')
 
 
+    name = input('Please enter the name under which you want to save a file: ') 
+    if os.path.exists(name + '.xlsx' or name + '.csv' or name + '.json'):
+        print('File already exists')
+        question =[inquirer.List('file', message='Do you want to overwrite it?',
+                                 choices=['yes', 'no'])]
+        answers = inquirer.prompt(question)
+        if answers['file'] == 'yes':
+            name = name
+        if answers['file'] == 'no': 
+            question = [inquirer.List('file', message='Do you want to save it under a different name?',
+                                      choices=['yes', 'no'])]
+            answers = inquirer.prompt(question)
+            if answers['file'] == 'yes':
+                name = input('Please enter the name under which you want to save a file: ')
+            if answers['file'] == 'no':
+                print('Operation aborted')
+                sys.exit()
+                
+    pd.set_option('display.max_columns', None)
+    print(df.head())    
+    df.set_index([col for col in df.columns], inplace=True)
+    df = df.reset_index()
+    print(df.columns)
+
+    headers = []
+    while True:
+        question = [inquirer.Text('headers', message="Please enter the headers"
+                                  )]
+        answers = inquirer.prompt(question)
+        try:
+            if answers['headers'] in df.columns:
+                headers.append(answers['headers'])
+
+        except ValueError:
+            print("Invalid input, please enter corret header.")
+        next_addition = input('Do you want to add another header? (y/n): '
+                              ).lower()
+        if next_addition != 'y':
+            break
+    
+    question = [inquirer.List('file', message='Under which extensions you want to save the file?',
+                              choices=['xlsx', 'csv', 'json'])]
+    
+    answers = inquirer.prompt(question)
+    
+    df = df.loc[:, headers]
+    
+    try:
+        if answers['file'] == 'xlsx':
+    
+            with pd.ExcelWriter(name + '.xlsx', engine='openpyxl') as writer:
+                df.to_excel(writer, sheet_name="Sheet1", index=False)
+                workbook = writer.book
+                worksheet = writer.sheets['Sheet1']
+                
+                for idx, col in enumerate(df.columns):
+                    max_length = 6
+                    column = df[col]
+                    max_length = max((len(str(cell)) for cell in column),
+                                    default=max_length)
+                    adjusted_width = (max_length + 1
+                                    ) * 2  
+                    worksheet.column_dimensions[get_column_letter(idx+1)
+                                                ].width = adjusted_width
+        
+        if answers['file'] == 'csv':
+            
+            df.to_csv(name + '.csv', index=False)
+       
+        if answers['file'] == 'json':
+            
+            df.to_json(name + '.json', orient='records')
+            
+    
+    except KeyError or AttributeError:
+        print('Column not found')
+        sys.exit()
+                        
+    print(f'The file {name}.{answers["file"]} has been saved')  
+    
+    question = input('Do you want to create a chart from that file? [Y/N] ').lower()
+    if question == 'y':
+        make_a_chart(df)
+        
+
+
       
 @click.group()
 def cli():
