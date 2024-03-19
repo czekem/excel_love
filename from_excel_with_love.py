@@ -262,6 +262,16 @@ def working_on_files(df):
     question = input('Do you want to create a chart from that file? [Y/N] ').lower()
     if question == 'y':
         make_a_chart(df)
+
+def make_a_chart(data_file):
+    
+    pd.set_option('display.max_columns', None)
+    print(data_file.head()) 
+    for_x_axis = input('Please wrote the name of column you want to use as x axis: ')
+    for_y_axis = input('Please wrote the name of column you want to use as y axis: ')
+    fig = px.scatter(data_file, x=for_x_axis, y=for_y_axis)                                           
+    fig.write_html(r'C:\Users\Czekaj\Desktop\chart.html')
+    fig.show()
         
 
 
