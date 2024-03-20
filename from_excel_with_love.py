@@ -41,18 +41,22 @@ def list_of_files():
 
 
 
-def prepare_question():
-    first = [inquirer.List('first_question', message = 'Which file you want to open?', choices =
-                           ['csv','xlsx', 'json'])]
-        
-    answers = inquirer.prompt(first)
-    
-    if answers['first_question'] == 'csv':
-        return 'csv'
-    elif answers['first_question'] == 'xlsx':
-        return 'xlsx'
-    elif answers['first_question'] == 'json':
-        return 'json'
+def file_checker():
+    filename = input('Please write the name of file: ').lower()
+    if '.' in filename:
+        name, extension = filename.rsplit('.', maxsplit=1)
+        filename = name
+    extension = ''
+    question = [inquirer.List('question',
+                              message='Please choose file extension',
+                              choices=['csv', 'xlsx', 'json'])]
+    answers = inquirer.prompt(question)
+    if answers['question'] == 'csv':
+        extension = '.csv'
+    if answers['question'] == 'xlsx':
+        extension = '.xlsx'
+    if answers['question'] == 'json':
+        extension = '.json'        
 
 def looking_file(first_question):
     if first_question == 'xlsx':
