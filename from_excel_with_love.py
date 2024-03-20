@@ -1,7 +1,23 @@
 import os 
 import glob
+import csv
+import json
+import re
 
+import sys
+import pathlib
+from pathlib import Path
+
+
+
+from matplotlib import figure
 import pandas as pd
+ 
+import matplotlib.pyplot as plt 
+import plotly.express as px
+import plotly.io as pio
+
+
 import click
 import openpyxl
 import inquirer
@@ -9,65 +25,19 @@ import inquirer
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.dimensions import ColumnDimension
 
-def list_of_files():
-    filename = input('Please write the name of file: ').lower()
-    if '.' in filename:
-        name, extension = filename.rsplit('.', maxsplit=1)
-        filename = name
-    extension = ''
-    question = [inquirer.List('question',
-                              message='Please choose file extension',
-                              choices=['csv', 'xlsx', 'json'])]
-    answers = inquirer.prompt(question)
-    if answers['question'] == 'csv':
-        extension = '.csv'
-    if answers['question'] == 'xlsx':
-        extension = '.xlsx'
-    if answers['question'] == 'json':
-        extension = '.json'
-    try:
-        total = glob.glob(f'{filename}{extension}')
-        if not total: 
-            raise FileNotFoundError
-    except FileNotFoundError:
-        print("""File not found, please try again and check the name of looked file.""")
-        question = input('Do you want to check if file exist, in other folders [Y/N]? '
-                         ).lower()
-        if question in ['y', 'yes']:
-            opening_file = False
-            for root, dirs, files in os.walk('/'):
-                if filename + extension in files:
-                    print(f'The file {filename}{extension} exists in the folder {root}') # os.path.join(root, total)
-                    question = input('Do you want to open this file? [Y/N]'
-                                     ).lower()
-                    if question in ['y', 'yes']:
-                        full_path = os.path.join(root, filename + extension)
-                        list_new = [full_path]
-                        if extension == '.xlsx':
-                            open_a_file(list_new)
-                            opening_file = True
-                            break
-                        elif extension == '.csv':
-                            open_a_file(list_new)
-                            opening_file = True
-                            break
-                        elif extension == '.json':
-                            open_a_file(list_new)
-                            opening_file = True
-                            break
-                
-            if not opening_file:
-                print('File not found')
-                
-    else:
-        print(f'The file {total} exists.')
-        question = input('Do you want to read data from this file? [Y/N]'
-                         ).lower()
-        if question == 'y':
-            total = filename + extension
-            list_new = [total]
-            open_a_file(list_new)
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
+
+def list_of_files():
+    pattern = re.compile(r'(check|check if file exist|check for file|list)$')
+    question = input('Do you want to check if file exist, or list of all files with nammed extension? Type "check" for file or "list" for list: ').lower()
+    result = pattern.match(question)
+    try:
+        if result:
+            return result.group()
+    except KeyError:
+        sys.exit('No such option to choose. Please try again.')
 
 
 
