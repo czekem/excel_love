@@ -56,7 +56,7 @@ def file_checker():
     if answers['question'] == 'xlsx':
         extension = '.xlsx'
     if answers['question'] == 'json':
-        extension = '.json' 
+        extension = '.json'
     try:
         total = glob.glob(f'{filename}{extension}')
         if not total:
@@ -69,7 +69,7 @@ def file_checker():
             opening_file = False
             for root, dirs, files in os.walk('/'):
                 if filename + extension in files:
-                    print(f'The file {filename}{extension} exists in the folder {root}') 
+                    print(f'The file {filename}{extension} exists in the folder {root}') # os.path.join(root, total)
                     question = input('Do you want to open this file? [Y/N]'
                                      ).lower()
                     if question in ['y', 'yes']:
@@ -87,6 +87,18 @@ def file_checker():
                             open_a_file(list_new)
                             opening_file = True
                             break
+                
+            if not opening_file: 
+                print('File not found')
+                
+    else:
+        print(f'The file {total} exists.')
+        question = input('Do you want to read data from this file? [Y/N]'
+                         ).lower()
+        if question == 'y':
+            total = filename + extension
+            list_new = [total]
+            open_a_file(list_new)
 
 def looking_file(first_question):
     if first_question == 'xlsx':
