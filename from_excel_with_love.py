@@ -37,9 +37,9 @@ def list_of_files():
         if result:
             return result.group()
     except KeyError:
-        sys.exit('No such option to choose. Please try again.') # < - if somone will enter the file name already make it work also
+        sys.exit('No such option to choose. Please try again.')
     else:
-        sys.exit('No such option to choose. Please try again.') # < - make raise error if not
+        sys.exit('No such option to choose. Please try again.') 
 
 def file_checker():
     filename = input('Please write the name of file: ').lower()
@@ -69,7 +69,7 @@ def file_checker():
             opening_file = False
             for root, dirs, files in os.walk('/'):
                 if filename + extension in files:
-                    print(f'The file {filename}{extension} exists in the folder {root}') # os.path.join(root, total)
+                    print(f'The file {filename}{extension} exists in the folder {root}') 
                     question = input('Do you want to open this file? [Y/N]'
                                      ).lower()
                     if question in ['y', 'yes']:
@@ -149,7 +149,7 @@ def looking_file(first_question):
     try: 
         looking_for_file = glob.glob(name + first_question)
         
-    except FileNotFoundError:   # tutaj też mogę dać raiseError gdyby ktoś bardzo chciał dać np. cow.xlsx.xlsx
+    except FileNotFoundError:  
         print('File not found')
     
     
@@ -157,11 +157,11 @@ def looking_file(first_question):
             
     
 def open_a_file(looking_for_document):
-    if looking_for_document:  # Check if the list is not empty
-        first_file = looking_for_document[0]  # Take the first file from the list
+    if looking_for_document: 
+        first_file = looking_for_document[0]  
         name, extension = first_file.rsplit('.', maxsplit=1)
         if extension == 'xlsx':
-            df = pd.read_excel(first_file, engine='openpyxl')  # Use the first_file variable
+            df = pd.read_excel(first_file, engine='openpyxl')  
             working_on_files(df)
         elif extension == 'csv':
             df = pd.read_csv(first_file)     # try to make code in a "DRY" way
@@ -176,7 +176,6 @@ def open_a_file(looking_for_document):
         print("No files found.")
         return None
         ## value error raise zrobić tutaj, albo try and except
-
 
 def working_on_files(df):
     
@@ -203,7 +202,7 @@ def working_on_files(df):
     df.set_index([col for col in df.columns], inplace=True)
     df = df.reset_index()
     print(df.columns)
-    # question = input('Please write the name of the column you want to transfer to another file: ')  - unecessary now
+    
     headers = []
     while True:
         question = [inquirer.Text('headers', message="Please enter the headers"
@@ -241,7 +240,7 @@ def working_on_files(df):
                     max_length = max((len(str(cell)) for cell in column),
                                     default=max_length)
                     adjusted_width = (max_length + 1
-                                    ) * 2  # < - Here I can really make the  cells "wider" by much, just to change '1' to other value
+                                    ) * 2  
                     worksheet.column_dimensions[get_column_letter(idx+1)
                                                 ].width = adjusted_width
         
@@ -258,7 +257,7 @@ def working_on_files(df):
         print('Column not found')
         sys.exit()
                         
-    print(f'The file {name}.{answers["file"]} has been saved')  # konstrukcja match < - !!!!!!!!!!
+    print(f'The file {name}.{answers["file"]} has been saved') 
     
     question = input('Do you want to create a chart from that file? [Y/N] ').lower()
     if question == 'y':
@@ -272,9 +271,7 @@ def make_a_chart(data_file):
     for_x_axis = input('Please wrote the name of column you want to use as x axis: ')
     for_y_axis = input('Please wrote the name of column you want to use as y axis: ')
     fig = px.scatter(data_file, x=for_x_axis, y=for_y_axis)                                           
-    # plt.bar(x_axis, y_axis)
-    # plt.xlabel('x_axis')
-    # plt.ylabel('y_axis')
+
     
     folder_path = input("Please enter the folder path where you want to save the chart: ")
     html_file_path = Path(folder_path) / "chart.html"
@@ -296,10 +293,10 @@ def make_a_chart(data_file):
 def get_default_save_location():
     if os.name == 'nt': # Windows
         return os.path.join(os.path.expanduser('~'), 'Documents')
-    elif os.name == 'posix': # macOS and Linux
+    elif os.name == 'posix': 
         return os.path.expanduser('~')
     else:
-        return os.path.expanduser('~') # Fallback to the user's home directory
+        return os.path.expanduser('~') 
 
 
 
@@ -311,22 +308,19 @@ def html_to_png(html_file_path, png_file_path):
     png_file_path = str(png_file_path)
     
     chrome_options = Options()
-    chrome_options.add_argument("--headless") # Run in headless mode
-    chrome_options.add_argument("--window-size=1920,1080") # Set window size
+    chrome_options.add_argument("--headless") 
+    chrome_options.add_argument("--window-size=1920,1080")
 
-    # Initialize the Chrome driver
+
     driver = webdriver.Chrome(options=chrome_options)
 
-    # Load the HTML file
+
     driver.get("file://" + html_file_path)
 
-    # Wait for the page to load
-    driver.implicitly_wait(10) # Adjust the wait time as needed
+    driver.implicitly_wait(10) 
 
-    # Take a screenshot and save it as a PNG
     driver.save_screenshot(png_file_path)
 
-    # Close the browser
     driver.quit()
 
 
@@ -334,7 +328,7 @@ def html_to_png(html_file_path, png_file_path):
 
 
 
-# https://realpython.com/pandas-plot-python/ < - work with using this material
+
 
 @click.group()
 def cli():
@@ -350,10 +344,7 @@ def list_reading():
     elif first == 'list':
         list_of_extension()
         
-# @cli.command()
-# def working_on_files():  < - poprosić Martę o pomoc
-#     open_working_file = 'a'
- 
+
  
 
 @cli.command()
@@ -375,19 +366,5 @@ if __name__ == '__main__':
 
 
 
-
-# def make_a_chart(data_file):
-#     # file = data_file
-#     pd.set_option('display.max_columns', None)
-#     print(data_file.head()) 
-#     for_x_axis = input('Please wrote the name of column you want to use as x axis: ')
-#     for_y_axis = input('Please wrote the name of column you want to use as y axis: ')
-#     fig = px.scatter(data_file, x=for_x_axis, y=for_y_axis)                                           
-#     # plt.bar(x_axis, y_axis)
-#     # plt.xlabel('x_axis')
-#     # plt.ylabel('y_axis')
-#     fig.write_html(r'C:\Users\Czekaj\Desktop\chart.html')
-#     fig.show()
-#     html_to_png(r'C:\Users\Czekaj\Desktop\chart.html', r'C:\Users\Czekaj\visual_studio_code\big_project\excels\charts.png')
 
 
