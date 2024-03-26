@@ -41,3 +41,8 @@ def test_enter_looking_file():
     os.remove(temp_file_path)
 
     assert test_enter_looking_file is not None
+
+def test_logic_file_open_xlsx():
+    file = 'file.xlsx'
+    name, extension = file.rsplit('.', maxsplit=1)
+    assert extension == 'xlsx'
