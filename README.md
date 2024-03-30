@@ -48,7 +48,9 @@ For this moment (30.03.2024) the script can do :
 
 * Allowing to create charts right after creating new file
 
+Know Problems :
 
+* Script isn't working best ( for this moment of course), if got more than one worksheet in the excel, or one worksheet with the table and and chart in it.
 
 
 
