@@ -35,7 +35,7 @@ from one file to the another.
 **What the code is doing now already?**
 
 
-For this moment (16.03.2024) the script can do :
+For this moment (30.03.2024) the script can do :
 
 
 * Open any .xlsx, .JSON or .csv file that would be in the same directory as the script
@@ -47,6 +47,8 @@ For this moment (16.03.2024) the script can do :
 * Save the file as the .xlsx, .JSON or .csv (it will be added in the following days)
 
 * Allowing to create charts right after creating new file
+
+
 
 
 
