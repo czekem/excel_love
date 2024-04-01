@@ -46,3 +46,19 @@ def test_logic_file_open_xlsx():
     file = 'file.xlsx'
     name, extension = file.rsplit('.', maxsplit=1)
     assert extension == 'xlsx'
+
+def tests_file_open_extension_xlsx():
+    with tempfile.NamedTemporaryFile(suffix='.xlsx', delete=False) as temp:
+        temp_file_path = temp.name
+        
+    name, extension = temp_file_path.rsplit('.', maxsplit=1)
+    
+    os.remove(temp_file_path)
+    assert extension == 'xlsx'
+    
+
+
+
+
+
+
