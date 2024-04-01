@@ -55,6 +55,11 @@ def tests_file_open_extension_xlsx():
     
     os.remove(temp_file_path)
     assert extension == 'xlsx'
+
+def test_logic_file_open_csv():
+    file = 'file.csv'
+    name, extension = file.rsplit('.', maxsplit=1)
+    assert extension == 'csv'
     
 
 
