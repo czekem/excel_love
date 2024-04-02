@@ -46,7 +46,7 @@ For this moment (30.03.2024) the script can do :
 
 * Save the file as the .xlsx, .JSON or .csv (it will be added in the following days)
 
-* Allowing to create charts right after creating new file
+* Allowing to create charts right after creating new file and save them in the newly created folder
 
 ** Know Problems : **
 
