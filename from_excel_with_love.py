@@ -29,17 +29,24 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-def list_of_files():
-    pattern = re.compile(r'(check|check if file exist|check for file|list)$')
-    question = input('Do you want to check if file exist, or list of all files with nammed extension? Type "check" for file or "list" for list: ').lower()
-    result = pattern.match(question)
-    try:
-        if result:
-            return result.group()
-    except KeyError:
-        sys.exit('No such option to choose. Please try again.')
-    else:
-        sys.exit('No such option to choose. Please try again.') 
+def list_of_files(question=None):
+    """
+    Prompts the user to choose between checking if a file exists or listing all files with a named extension.
+    The user can also choose to exit the function.
+
+    Returns:
+        str: The user's choice ('check', 'check if file exist', 'check for file', 'list', or 'exit').
+    """
+    pattern = ['check', 'check if file exist', 'check for file', 'list', 'exit']
+    while True:
+        question = input('Do you want to check if file exist, or list of all files with nammed extension?\n Type "check" for file or "list" for list or "exit" for exit: ').lower()
+        if question in pattern:
+            return question
+        elif question == 'exit':
+            print('You chose to exit.')
+            break
+        else:
+            print('No such option to choose. Please try again.')
 
 def file_checker():
     filename = input('Please write the name of file: ').lower()
