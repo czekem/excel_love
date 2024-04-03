@@ -53,7 +53,9 @@ For this moment (30.03.2024) the script can do :
 * Script isn't working best ( for this moment of course), if got more than one worksheet in the excel, or one worksheet with the table and and chart in it.
 * Need to add a possibilty for choosing working sheet in "xlsx" file
 
+** Want I want to add : **
 
+* Make script "transfer" to classes, so it will be correct with OOP, and will allow for more flexibility on expanding the code.
 
 
 
