@@ -57,7 +57,7 @@ For this moment (30.03.2024) the script can do :
 
 * Make script "transfer" to classes, so it will be correct with OOP, and will allow for more flexibility on expanding the code.
 
-* Allowing to work on .txt and .ods files
+* Allowing to work on .txt and .ods files and also SQL files
 
 
 
