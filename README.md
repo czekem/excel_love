@@ -61,6 +61,8 @@ For this moment (30.03.2024) the script can do :
 
 * Make possibility in terms of workin on Power Bi files
 
+* Allow edition of charts
+
 
 
 
