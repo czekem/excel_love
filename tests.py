@@ -60,6 +60,33 @@ def test_logic_file_open_csv():
     file = 'file.csv'
     name, extension = file.rsplit('.', maxsplit=1)
     assert extension == 'csv'
+
+
+def test_open_file_extension_csv():
+    with tempfile.NamedTemporaryFile(suffix='.csv', delete=False) as temp:
+        temp_file_path = temp.name
+        
+    name, extension = temp_file_path.rsplit('.', maxsplit=1)
+    
+    os.remove(temp_file_path)
+    assert extension == 'csv'
+
+    
+
+def test_open_file_extension_json():
+    with tempfile.NamedTemporaryFile(suffix='.json', delete=False) as temp:
+        temp_file_path = temp.name
+        
+    name, extension = temp_file_path.rsplit('.', maxsplit=1)
+    
+    os.remove(temp_file_path)
+    assert extension == 'json'
+
+
+def test_logic_file_open_json():
+    file = 'file.json'
+    name, extension = file.rsplit('.', maxsplit=1)
+    assert extension == 'json'
     
 
 
