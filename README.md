@@ -42,9 +42,9 @@ For this moment (30.03.2024) the script can do :
 
 * Look for named file (with the extension) in whole computer memory, and enum every file, so you could choose it by entering a correct number.
 
-* Giving possibility to "extract" the columns with their data from the main file to the file that We want to create
+* Giving possibility to "extract" the columns with their data from the main file to the file that We want to create.
 
-* Save the file as the .xlsx, .JSON or .csv (it will be added in the following days)
+* Save the file as the .xlsx, .JSON or .csv (it will be added in the following days).
 
 * Allowing to create charts right after creating new file and save them in the newly created folder
 
