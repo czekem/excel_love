@@ -38,9 +38,9 @@ from one file to the another.
 For this moment (30.03.2024) the script can do :
 
 
-* Open any .xlsx, .JSON or .csv file that would be in the same directory as the script
+* Open any .xlsx, .JSON or .csv file that would be in the same directory as the script.
 
-* Look for named file (with the extension) in whole computer memory, and enum every file, so you could choose it by entering a correct number
+* Look for named file (with the extension) in whole computer memory, and enum every file, so you could choose it by entering a correct number.
 
 * Giving possibility to "extract" the columns with their data from the main file to the file that We want to create
 
