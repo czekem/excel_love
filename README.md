@@ -13,7 +13,7 @@ from one file to the another.
 **Features:**
 
 
-* Supports various file formats: Excel (.xlsx), CSV, and JSON
+* Supports various file formats: Excel (.xlsx), CSV, and JSON.
 
 * Intuitive interface enables easy selection of desired columns and values
 
