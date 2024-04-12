@@ -25,7 +25,7 @@ from one file to the another.
 
 * Create a graph using plot library (will be added soon)
 
-* Create a user interference (would be grateful for help here)
+* Create a user interference (would be grateful for help here).
 
 * Create a tool in that way, that it would be easy-usable for people with different disabilities
 
