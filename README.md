@@ -5,7 +5,7 @@
 # EasySelect: Your One-Stop Tool for Managing and Manipulating Data Across File Formats (Excel, CSV, JSON).
 
 
-EasySelect is a user-friendly Python application designed to simplify data management by allowing you to select, transfer, and summarize columns across common file formats (Excel, CSV, JSON). This tool empowers you to effectively manipulate your data without requiring any programming knowledge. It's made mainly to make working on Excel and other files like CSV or JSON and make an easier interaction between them as transferring the data
+EasySelect is a user-friendly Python application designed to simplify data management by allowing you to select, transfer, and summarize columns across common file formats (Excel, CSV, JSON). This tool empowers you to effectively manipulate your data, without requiring any programming knowledge. It's made mainly to make working on Excel and other files like CSV or JSON and make an easier interaction between them as transferring the data
 from one file to the another.
 
 
