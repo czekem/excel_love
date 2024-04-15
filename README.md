@@ -14,7 +14,7 @@ from one file to the another.
 
 * Supports various file formats: Excel (.xlsx), CSV, and JSON.
 
-* Intuitive interface enables easy selection of desired columns and values
+* Intuitive interface enables easy selection of desired columns and values.
 
 * Generates summaries of chosen columns for quick data analysis
 
