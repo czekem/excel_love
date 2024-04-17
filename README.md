@@ -16,9 +16,9 @@ from one file to the another.
 
 * Intuitive interface enables easy selection of desired columns and values.
 
-* Generates summaries of chosen columns for quick data analysis
+* Generates summaries of chosen columns for quick data analysis.
 
-* Saves data modifications to the user-specified file format
+* Saves data modifications to the user-specified file format.
 
 * Planned desktop application (GUI) for user-friendly interaction (will be added soon)
 
