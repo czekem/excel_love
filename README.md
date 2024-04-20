@@ -26,7 +26,7 @@ from one file to the another.
 
 * Create a user interference (would be grateful for help here).
 
-* Create a tool in that way, that it would be easy-usable for people with different disabilities
+* Create a tool in that way, that it would be easy-usable for people with different disabilities.
 
 * Added test.py for testing functions that are in the code.
 
