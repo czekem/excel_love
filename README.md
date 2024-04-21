@@ -20,7 +20,7 @@ from one file to the another.
 
 * Saves data modifications to the user-specified file format.
 
-* Planned desktop application (GUI) for user-friendly interaction (will be added soon)
+* Planned desktop application (GUI) for user-friendly interaction (will be added soon).
 
 * Create a graph using plot library (will be added soon).
 
