@@ -58,7 +58,7 @@ For this moment (30.03.2024) the script can do :
 
 * Allowing to work on .txt and .ods files, and also SQL files.
 
-* Make possibility in terms of workin on Power Bi files
+* Make possibility in terms of workin on Power Bi files.
 
 * Allow edition of charts
 
