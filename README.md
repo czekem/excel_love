@@ -64,6 +64,9 @@ For this moment (30.03.2024) the script can do :
 
 
 
+Working on transfer all functions from script based style to class based, and make it more OOP.
+
+
 
 MIT License
 
