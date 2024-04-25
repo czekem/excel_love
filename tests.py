@@ -89,7 +89,13 @@ def test_logic_file_open_json():
     assert extension == 'json'
     
 
-
+def test_create_a_chart_bar_chart_novice_approach():
+    x_axis = ['a', 'b', 'c']
+    y_axis = [1, 2, 3]
+    plt.bar(x_axis, y_axis)
+    plt.xlabel('x_axis')
+    plt.ylabel('y_axis')
+    assert plt.bar is not None
 
 
 
