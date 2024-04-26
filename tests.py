@@ -97,6 +97,11 @@ def test_create_a_chart_bar_chart_novice_approach():
     plt.ylabel('y_axis')
     assert plt.bar is not None
 
+    assert os.path.exists(temp_file_path)
+    assert os.path.getsize(temp_file_path) > 0
+    
+    os.remove(temp_file_path)
+
 
 
 
