@@ -28,7 +28,7 @@ from one file to the another.
 
 * Create a tool in that way, that it would be easy-usable for people with different disabilities.
 
-* Added test.py for testing functions that are in the code.
+* Added test.py, for testing functions that are in the code.
 
 
 **What the code is doing now already?**
