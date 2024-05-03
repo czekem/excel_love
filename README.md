@@ -22,7 +22,7 @@ from one file to the another.
 
 * Planned desktop application (GUI), for a user-friendly interaction (will be added soon).
 
-* Create a graph using plot library (will be added soon).
+* Create a graph, using plot library (will be added soon).
 
 * Create a user interference (would be grateful for help here).
 
