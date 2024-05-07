@@ -1,4 +1,4 @@
-![EasySelect Logo](https://github.com/czekem/excel_love/blob/main/ec777f4a74014805b9f40ca39caedbdd.png)
+![EasySelect Logo](https://github.com/czekem/excel_love/blob/main/pixlr-image-generator-46f2ae5b-fb37-4850-831a-11cb0893e6a6.png)
 
 
 
