@@ -35,7 +35,7 @@ from one file to the another.
 **What the code is doing now already?**
 
 
-For this moment (05.05.2024), the script can do :
+For this moment (10.05.2024), the script can do :
 
 
 * Open any .xlsx, .JSON or .csv file that would be in the same directory as the script.
