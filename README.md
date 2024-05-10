@@ -11,7 +11,7 @@ from one file to the another.
 
 **Features:**
 
-* Script written in classes to make it easier for readability and improvement in terms of adding a new feature.
+* Script written in classes, to make it easier for readability and improvement in terms of adding a new feature.
 
 * Supports various file formats: Excel (.xlsx), CSV, and JSON.
 
