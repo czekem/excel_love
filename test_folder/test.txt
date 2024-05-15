@@ -1,1 +1,1 @@
-
+Here are few tests, that show the logic of this tool.
