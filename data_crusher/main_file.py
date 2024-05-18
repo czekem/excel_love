@@ -30,3 +30,17 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import click
 import pyttsx3
+
+
+engine = pyttsx3.init()
+engine.setProperty('rate', 160)
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
+
+
+def display_text_larger(text):
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+    label = tk.Label(root, text=text, font=("Helvetica", 24))
+    label.pack()
+    root.mainloop()
