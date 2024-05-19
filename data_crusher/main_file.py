@@ -44,3 +44,22 @@ def display_text_larger(text):
     label = tk.Label(root, text=text, font=("Helvetica", 24))
     label.pack()
     root.mainloop()
+
+
+
+def main():
+    message = 'Hello to the Data Crusher, We want you to help working with xlsx file, odts file, csv file or json file, as smooth as possible'
+    engine.say(message)
+    engine.runAndWait()
+    print(message)
+    main_question = 'Please choose if you want messages to be spoken, written using bigger font or standard? Please type bigger, spoken or nothing.\n'
+    engine.say(main_question)
+    engine.runAndWait()
+    important_question = input(main_question).lower()
+    try:
+        if important_question in ['bigger', 'big']:
+            print('Work in progress')
+
+
+
+
