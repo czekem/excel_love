@@ -59,6 +59,19 @@ def main():
     try:
         if important_question in ['bigger', 'big']:
             print('Work in progress')
+        elif important_question in ["spoken", "speaking", "speak"]:
+            pass
+        elif important_question in ['nothing', 'n', 'nothi']:
+            file = input('Please enter the name of the file: ')
+            if '.' in file:
+                file = file.split(".")[0]
+            extension = input('Please enter the extension of the file: ').lower()
+            if '.' in extension:
+                extension = extension.split(".")[0]
+            if extension in ['csv', 'json', 'xlsx', 'ods', 'txt', 'html', 'sql']:
+                extension = extension
+            elif '.' not in extension:
+                extension = extension
 
 
 
