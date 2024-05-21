@@ -72,6 +72,15 @@ def main():
                 extension = extension
             elif '.' not in extension:
                 extension = extension
+            
+            else:
+                print('Unsupported file extension.')
+                question = input('Do you want to start again? [Y/N]').lower()
+                if question in ['y', 'yes']:
+                    main()
+                else:
+                    message = 'The program was closed.'
+                    sys.exit(message)
 
 
 
