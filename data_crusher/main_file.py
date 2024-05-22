@@ -81,6 +81,15 @@ def main():
                 else:
                     message = 'The program was closed.'
                     sys.exit(message)
+                        print(file, extension)
+            work_file = WorkFile(file, extension, df=None)
+            file_path = work_file.open_file()
+            if file_path:
+                df = work_file.read_excel_file()
+                open_file = OpenFile(df=df)
+                open_file.open_the_file()
+            else:
+                click.echo("File not found or search aborted.")
 
 
 
