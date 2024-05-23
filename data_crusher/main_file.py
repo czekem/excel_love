@@ -46,7 +46,6 @@ def display_text_larger(text):
     root.mainloop()
 
 
-
 def main():
     message = 'Hello to the Data Crusher, We want you to help working with xlsx file, odts file, csv file or json file, as smooth as possible'
     engine.say(message)
@@ -72,7 +71,7 @@ def main():
                 extension = extension
             elif '.' not in extension:
                 extension = extension
-            
+                
             else:
                 print('Unsupported file extension.')
                 question = input('Do you want to start again? [Y/N]').lower()
@@ -81,7 +80,7 @@ def main():
                 else:
                     message = 'The program was closed.'
                     sys.exit(message)
-                        print(file, extension)
+            print(file, extension)
             work_file = WorkFile(file, extension, df=None)
             file_path = work_file.open_file()
             if file_path:
@@ -90,7 +89,16 @@ def main():
                 open_file.open_the_file()
             else:
                 click.echo("File not found or search aborted.")
+    except KeyboardInterrupt:
+        message = 'Program has suddenly terminated. Please start again.'
+        engine.say(message)
+        engine.runAndWait()
+        print(message)
+        sys.exit()
 
+    
+    
+    
 
-
-
+if __name__ == "__main__":
+    main()
