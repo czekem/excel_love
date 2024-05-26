@@ -47,3 +47,6 @@ class WorkFile:
         self.name = name
         self.extension = extension
         self.df = df
+
+   def open_file(self):
+        file_path = f'{self.name}.{self.extension}'
