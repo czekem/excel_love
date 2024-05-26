@@ -40,3 +40,10 @@ engine.setProperty('voice', voices[1].id)
 def speak(text):
     engine.say(text)
     engine.runAndWait()
+
+@dataclass
+class WorkFile:
+    def __init__(self, name, extension, df):
+        self.name = name
+        self.extension = extension
+        self.df = df
