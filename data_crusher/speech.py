@@ -48,5 +48,16 @@ class WorkFile:
         self.extension = extension
         self.df = df
 
-   def open_file(self):
+    def open_file(self):
         file_path = f'{self.name}.{self.extension}'
+        try:
+            file_search = glob.glob(file_path)
+            if not file_search:
+                message = 'File not found in the current directory. Searching the entire system...'
+                engine.say(message)
+                engine.runAndWait()
+                raise Exception(message)
+            return file_path
+        except Exception as e:
+            print(e)
+            return self.looking_for_file()
