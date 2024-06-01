@@ -61,3 +61,29 @@ class WorkFile:
         except Exception as e:
             print(e)
             return self.looking_for_file()
+
+
+    def looking_for_file(self, max_attempts=3):
+        name = f'{self.name}.{self.extension}'
+        found_files = []
+        current_directory_checked = False
+        attempts = 0
+
+        while attempts < max_attempts:
+            for root, _, files in os.walk('.'):
+                if name in files:
+                    message = f'The file {name} exists in the folder {root}'
+                    print(message)
+                    engine.say(message)
+                    engine.runAndWait()   # if current_directory_checked else engine.runAndWait()
+                    found_files.append(os.path.join(root, name))
+                    current_directory_checked = True
+                    break  # Break the loop as we found the file
+
+            if not found_files and not current_directory_checked:
+                print("File not found in the current directory. Searching the entire system...")
+                for root, _, files in os.walk('/'):
+                    if name in files:
+                        print(f'The file {name} exists in the folder {root}')
+                        found_files.append(os.path.join(root, name))
+                        break  # Break the loop as we found the file
