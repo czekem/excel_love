@@ -44,7 +44,7 @@ def speak(text):
 
 
 @dataclass
-class WorkFile:
+class WorkFile1:
     def __init__(self, name, extension, df):
         self.name = name
         self.extension = extension
@@ -124,7 +124,7 @@ class WorkFile:
     def close_the_file(self):
         pass
 
-class OpenFile(WorkFile):
+class OpenFile1(WorkFile1):
     def __init__(self, df):
         self.df = df
 
@@ -132,15 +132,15 @@ class OpenFile(WorkFile):
         pd.set_option('display.max_columns', None)
         print(self.df.head())
         headers = self.df.head().to_string(index=False)
-        columns = self.df.columns.to_string()
+        # columns = self.df.columns.to_string()
         self.df = self.df.fillna(0.0)
         self.df.set_index([col for col in self.df.columns], inplace=True)
         self.df = self.df.reset_index()
         print(self.df.columns)
         speak('Headers of the DataFrame:')
         speak(headers)
-        speak('Columns of the DataFrame:')
-        speak(columns)
+        # speak('Columns of the DataFrame:')
+        # speak(columns)
         headers = []
         while True:
             question = input('Please write the name of the column(s) you want to transfer to another file( please separate it by the commma) and press Enter: ')
@@ -151,17 +151,26 @@ class OpenFile(WorkFile):
                 if header.strip() in self.df.head():
                     headers.append(header.strip())
                 else:
-                    print(f'Column {header} not found')
+                    answer = (f'Column {header} not found')
+                    speak(answer)
+                    print(answer)
                     sys.exit()
 
             print('Selected headers:', headers)
-            contiune_question = input('Would you like to add another value? (y/n): ')
+            speak('Selected headers:', headers)
+            contiune_question = ('Would you like to add another value? (y/n): ')
+            speak(contiune_question)
+            contiune_question =  input('Would you like to continue? (y/n): ')
             if contiune_question != "y":
                 break
 
         possibilities = ['xlsx', 'csv', 'json', 'ods', 'txt', 'html', 'sql']
+        name_of_file = ('Please write the name under which you want to save the file:\n')
+        speak(name_of_file)
         name_of_file = input('Please write the name under which you want to save the file:\n').lower()
         name = name_of_file
+        question = ("Please write under which extension you want to save the file. 'xlsx', 'csv', 'json', 'ods', 'txt', 'html', 'sql'?: \n")
+        speak(question)
         question = input("Please write under which extension you want to save the file. 'xlsx', 'csv', 'json', 'ods', 'txt', 'html', 'sql'?: \n").lower()
         if question in possibilities:
             answer = question
@@ -198,21 +207,23 @@ class OpenFile(WorkFile):
             print('Column not found')
             sys.exit()
 
-        print(f"File {name}.{answer} has been saved")
+        speak(print(f"File {name}.{answer} has been saved"))
 
         question = input("Would you like to make a chart using this data (y/n)? :\n ").lower()
         if question == 'y':
-            ChartMaking(self.df).chart()
+            ChartMaking1(self.df).chart()
 
-class ChartMaking(OpenFile):
+class ChartMaking1(OpenFile1):
     def __init__(self, df):
         self.df = df
 
     def hover_data(self):
-        print(self.df.head())
-        print(self.df.columns)
+        speak(print(self.df.head()))
+        speak(print(self.df.columns))
         hover_data = []
         while True:
+            question = ('Please write the name of the column(s) you want to add as hover data (separate by comma): ')
+            speak(question)
             question = input('Please write the name of the column(s) you want to add as hover data (separate by comma): ')
             selected_hover = question.split(',')
 
@@ -220,28 +231,37 @@ class ChartMaking(OpenFile):
                 if header.strip() in self.df.columns:
                     hover_data.append(header.strip())
                 else:
-                    print(f"'{header.strip()}' is not in columns")
+                    speak(print(f"'{header.strip()}' is not in columns"))
                     break
 
-            print('Selected hover_data:', selected_hover)
+            speak(print('Selected hover_data:', selected_hover))
             continue_question = input('Do you want to add another value? (y/n): ')
             if continue_question != 'y':
                 break
         return hover_data
 
     def chart(self):
-        print(self.df.head())
-        print(self.df.columns)
+        speak(print(self.df.head()))
+        speak(print(self.df.columns))
+        for_x_axis = 'Please write the name of column you want to use as x axis: '
+        speak(for_x_axis)
         for_x_axis = input('Please write the name of column you want to use as x axis: ')
+        for_y_axis = 'Please write the name of column you want to use as y axis: '
+        speak(for_y_axis)
         for_y_axis = input('Please write the name of column you want to use as y axis: ')
 
+        question = 'Do you want to use a hover data? [Y/N] '
+        speak(question)
         question = input('Do you want to use a hover data? [Y/N] ').lower()
         if question in ['y', 'yes']:
             hover_data = self.hover_data()
         else:
             hover_data = None
 
+        question = 'What type of chart you want to prepare? [bar, line, scatter, pie, heatmap, violin] '
+        speak(question)
         question = input('What type of chart you want to prepare? [bar, line, scatter, pie, heatmap, violin] ').lower()
+        
         if question == 'scatter':
             fig = px.scatter(self.df, x=for_x_axis, y=for_y_axis, hover_data=hover_data)
         elif question == "bar":
@@ -256,23 +276,25 @@ class ChartMaking(OpenFile):
         elif question == "violin":
             fig = px.violin(self.df, y=for_y_axis, x=for_x_axis, box=True, hover_data=hover_data)
         else:
-            print("No such chart, please try again")
+            speak(print("No such chart, please try again"))
             return
 
         try:
             fig.show()
         except Exception as e:
-            print(f"Error displaying chart: {e}")
+            speak(print(f"Error displaying chart: {e}"))
 
 def start_question(attempts=3):
     if attempts <= 0:
-        print('You have run out of attempts. Please try again later.')
+        speak(print('You have run out of attempts. Please try again later.'))
         sys.exit()
         
         
         
         
         
+    main_file = 'please write the name of the file and extension. Example: file.csv: '
+    speak(main_file)
     main_file = input('please write the name of the file and extension. Example: file.csv: ').lower()
     if '.' in main_file:
         name, extension = main_file.rsplit('.', maxsplit=1)
@@ -294,14 +316,14 @@ def cli():
 @cli.command()
 def file_opening():
     name, extension = start_question()
-    work_file = WorkFile(name, extension, df=None)
+    work_file = WorkFile1(name, extension, df=None)
     file_path = work_file.open_file()
     if file_path:
         df = read_file_based_on_extension(file_path, extension)
-        open_file = OpenFile(df)
+        open_file = OpenFile1(df)
         open_file.open_the_file()
     else:
-        click.echo("File not found or search aborted.")
+        speak(click.echo("File not found or search aborted."))
     
 def read_file_based_on_extension(file_path, extension):
     """Read a file based on its extension and return a DataFrame."""
@@ -321,7 +343,7 @@ def read_file_based_on_extension(file_path, extension):
         click.echo("Reading SQL files directly is not supported. Please connect to a database.")
         return None
     else:
-        click.echo("Unsupported file extension.")
+        speak(click.echo("Unsupported file extension."))
         return None
     return df
 
@@ -329,10 +351,10 @@ def read_file_based_on_extension(file_path, extension):
 @cli.command()
 def chart():
     name, extension = start_question()
-    work_file = WorkFile(name, extension, df=None)
+    work_file = WorkFile1(name, extension, df=None)
     file_path = work_file.open_file()
     df = read_file_based_on_extension(file_path, extension)
-    open_file = ChartMaking(df)
+    open_file = ChartMaking1(df)
     open_file.chart()
 
     
