@@ -50,7 +50,7 @@ For this moment (12.06.2024) the script can do:
 
 * Giving option to choose scheet from which you want to obtain data.
 
-** Know Problems : **
+** Know Problems: **
 
 
 
