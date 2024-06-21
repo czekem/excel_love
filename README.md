@@ -70,6 +70,12 @@ For this moment (20.06.2024) the script can do:
 Working on transfer all functions from script based style to class based, and make it more OOP.
 
 
+For Data Analyst :
+
+   I want to expand this script, to include new functionality for data analysts using the Pandas library. 
+   This should allow users to locate the desired file and then extrapolate data based on an attribute provided by the user.
+
+
 
 MIT License
 
